@@ -7,6 +7,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var prefix = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var util = require('gulp-util');
+var browserify = require('browserify');
+var babelify = require('babelify');
 
 var config = {
 	port: 9025,
@@ -37,6 +39,20 @@ gulp.task('open', ['connect'], function() {
 			app: 'Google Chrome',
 			uri: config.devBaseUrl + ':' + config.port + '/'
 		}));
+});
+
+// Input file.
+var debugFlag = true;
+var bundler = browserify(config.mainJs, debugFlag);
+
+gulp.task('js', function() {
+	browserify(config.paths.mainJs)
+		.transform(babelify)
+		.bundle()
+		.on('error', console.error.bind(console))
+		.pipe(source('bundle.js'))
+		.pipe(gulp.dest(config.paths.dist + '/scripts'))
+		.pipe(connect.reload());
 });
 
 gulp.task('html', function() {
@@ -95,4 +111,3 @@ function log(msg) {
 		util.log(util.colors.blue(msg));
 	}
 }
-
