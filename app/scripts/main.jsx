@@ -2,46 +2,37 @@
 
 const { Router, Route, IndexRoute, Link, browserHistory } = ReactRouter
 
-class MainLayout extends React.Component {
+class Readers extends React.Component {
 	constructor() {
 		super();
 	}
   render() {
     return (
-      <div className="app">
-        <LandingNav />
-
-        <main>
-          {this.props.children}
-        </main>
-
+      <div>
+        <h2>Readers</h2>
+        <div><Link to="/">Back to Home</Link></div>
+        <div><Link to="newReader">Add New Reader</Link></div>
+        <div>
+          <div className="InputAddOn">
+            <span className="InputAddOn-item">Item #1:</span>
+            <input className="InputAddOn-field" />
+            <button className="InputAddOn-item">…</button>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-class MainContent extends React.Component {
-	constructor() {
-		super();
-	}
-  render() {
-    return (
-      <div className="mainArea">
-          {this.props.children}
-      </div>
-    )
+class NewReader extends React.Component {
+  constructor() {
+    super();
   }
-}
-
-class ReaderSupport extends React.Component {
-	constructor() {
-		super();
-	}
   render() {
     return (
-      <h2>
-        Reader Support
-      </h2>
+      <div>
+        <h2>New Reader</h2>
+      </div>
     )
   }
 }
@@ -85,32 +76,21 @@ class Librarians extends React.Component {
   }
 }
 
-class Home extends React.Component {
-	render() {
-		return (
-			<h1>Home Page 2</h1>
-		)
-	}
-};
-
-
-// ReactDOM.render(
-//   <LandingNav />,
-//   document.getElementById('app')
-// );
-
-ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={MainLayout}>
-      <IndexRoute component={Home} />
-      <Route component={MainContent}>
-        <Route path="readers" component={ReaderSupport} />
+jQuery(function() {
+  ReactDOM.render((
+    <Router history={browserHistory}>
+      <Route path="/" component={MainLayout}>
+        <IndexRoute component={LandingNav} />
+        <Route path="readers" component={Readers} />
+        <Route path="newReader" component={NewReader} />
         <Route path="library" component={Library} />
         <Route path="books" component={Books} />
         <Route path="librarians" component={Librarians} />
-      </Route> 
-    </Route>
-  </Router>
-), document.getElementById('app'))
+      </Route>
+    </Router>
+  ), document.getElementById('app'))
+})
+
+
 
 
