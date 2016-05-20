@@ -34951,6 +34951,95 @@ exports.default = MainLayout;
 },{"react":227}],232:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Readers = function (_React$Component) {
+  _inherits(Readers, _React$Component);
+
+  function Readers() {
+    _classCallCheck(this, Readers);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Readers).call(this));
+  }
+
+  _createClass(Readers, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Readers'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            _reactRouter.Link,
+            { to: '/' },
+            'Back to Home'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            _reactRouter.Link,
+            { to: 'newReader' },
+            'Add New Reader'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'InputAddOn' },
+            _react2.default.createElement(
+              'span',
+              { className: 'InputAddOn-item' },
+              'Item #1:'
+            ),
+            _react2.default.createElement('input', { className: 'InputAddOn-field' }),
+            _react2.default.createElement(
+              'button',
+              { className: 'InputAddOn-item' },
+              '…'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Readers;
+}(_react2.default.Component);
+
+exports.default = Readers;
+
+},{"react":227,"react-router":81}],233:[function(require,module,exports){
+'use strict';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -34974,6 +35063,10 @@ var _MainLayout2 = _interopRequireDefault(_MainLayout);
 var _LandingNav = require('./components/LandingNav');
 
 var _LandingNav2 = _interopRequireDefault(_LandingNav);
+
+var _Readers = require('./components/readers/Readers');
+
+var _Readers2 = _interopRequireDefault(_Readers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35079,70 +35172,6 @@ var Librarians = function (_React$Component4) {
   return Librarians;
 }(_react2.default.Component);
 
-var Readers = function (_React$Component5) {
-  _inherits(Readers, _React$Component5);
-
-  function Readers() {
-    _classCallCheck(this, Readers);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Readers).call(this));
-  }
-
-  _createClass(Readers, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h2',
-          null,
-          'Readers'
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            _reactRouter.Link,
-            { to: '/' },
-            'Back to Home'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            _reactRouter.Link,
-            { to: 'newReader' },
-            'Add New Reader'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'InputAddOn' },
-            _react2.default.createElement(
-              'span',
-              { className: 'InputAddOn-item' },
-              'Item #1:'
-            ),
-            _react2.default.createElement('input', { className: 'InputAddOn-field' }),
-            _react2.default.createElement(
-              'button',
-              { className: 'InputAddOn-item' },
-              '…'
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Readers;
-}(_react2.default.Component);
-
 (0, _jquery2.default)(function () {
   _reactDom2.default.render(_react2.default.createElement(
     _reactRouter.Router,
@@ -35151,7 +35180,7 @@ var Readers = function (_React$Component5) {
       _reactRouter.Route,
       { path: '/', component: _MainLayout2.default },
       _react2.default.createElement(_reactRouter.IndexRoute, { component: _LandingNav2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'readers', component: Readers }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'readers', component: _Readers2.default }),
       _react2.default.createElement(_reactRouter.Route, { path: 'newReader', component: NewReader }),
       _react2.default.createElement(_reactRouter.Route, { path: 'library', component: Library }),
       _react2.default.createElement(_reactRouter.Route, { path: 'books', component: Books }),
@@ -35160,5 +35189,5 @@ var Readers = function (_React$Component5) {
   ), document.getElementById('app'));
 });
 
-},{"./components/LandingNav":230,"./components/MainLayout":231,"jquery":48,"react":227,"react-dom":51,"react-router":81}]},{},[232])
+},{"./components/LandingNav":230,"./components/MainLayout":231,"./components/readers/Readers":232,"jquery":48,"react":227,"react-dom":51,"react-router":81}]},{},[233])
 //# sourceMappingURL=bundle.js.map

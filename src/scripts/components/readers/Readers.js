@@ -1,11 +1,10 @@
-'use strict';
+import React from 'react';
+import {Link} from 'react-router';
 
-const { Link } = ReactRouter
-
-class Readers extends React.Component {
-	constructor() {
-		super();
-	}
+export default class Readers extends React.Component {
+  constructor() {
+    super();
+  }
   render() {
     return (
       <div>
@@ -23,5 +22,3 @@ class Readers extends React.Component {
     )
   }
 }
-
-window.Readers = Readers;
