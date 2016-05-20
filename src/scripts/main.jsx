@@ -60,19 +60,21 @@ class Librarians extends React.Component {
   }
 }
 
+const router = (<Router history={hashHistory}>
+    <Route path="/" component={MainLayout}>
+      <IndexRoute component={LandingNav} />
+      <Route path="readers" component={Readers} />
+      <Route path="newReader" component={NewReader} />
+      <Route path="library" component={Library} />
+      <Route path="books" component={Books} />
+      <Route path="librarians" component={Librarians} />
+    </Route>
+  </Router>
+);
+
 jQuery(function() {
-  ReactDOM.render((
-    <Router history={hashHistory}>
-      <Route path="/" component={MainLayout}>
-        <IndexRoute component={LandingNav} />
-        <Route path="readers" component={Readers} />
-        <Route path="newReader" component={NewReader} />
-        <Route path="library" component={Library} />
-        <Route path="books" component={Books} />
-        <Route path="librarians" component={Librarians} />
-      </Route>
-    </Router>
-  ), document.getElementById('app'))
+  ReactDOM.render(
+    router, document.getElementById('app'))
 })
 
 

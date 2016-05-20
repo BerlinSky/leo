@@ -35172,21 +35172,23 @@ var Librarians = function (_React$Component4) {
   return Librarians;
 }(_react2.default.Component);
 
+var router = _react2.default.createElement(
+  _reactRouter.Router,
+  { history: _reactRouter.hashHistory },
+  _react2.default.createElement(
+    _reactRouter.Route,
+    { path: '/', component: _MainLayout2.default },
+    _react2.default.createElement(_reactRouter.IndexRoute, { component: _LandingNav2.default }),
+    _react2.default.createElement(_reactRouter.Route, { path: 'readers', component: _Readers2.default }),
+    _react2.default.createElement(_reactRouter.Route, { path: 'newReader', component: NewReader }),
+    _react2.default.createElement(_reactRouter.Route, { path: 'library', component: Library }),
+    _react2.default.createElement(_reactRouter.Route, { path: 'books', component: Books }),
+    _react2.default.createElement(_reactRouter.Route, { path: 'librarians', component: Librarians })
+  )
+);
+
 (0, _jquery2.default)(function () {
-  _reactDom2.default.render(_react2.default.createElement(
-    _reactRouter.Router,
-    { history: _reactRouter.hashHistory },
-    _react2.default.createElement(
-      _reactRouter.Route,
-      { path: '/', component: _MainLayout2.default },
-      _react2.default.createElement(_reactRouter.IndexRoute, { component: _LandingNav2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'readers', component: _Readers2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'newReader', component: NewReader }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'library', component: Library }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'books', component: Books }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'librarians', component: Librarians })
-    )
-  ), document.getElementById('app'));
+  _reactDom2.default.render(router, document.getElementById('app'));
 });
 
 },{"./components/LandingNav":230,"./components/MainLayout":231,"./components/readers/Readers":232,"jquery":48,"react":227,"react-dom":51,"react-router":81}]},{},[233])
