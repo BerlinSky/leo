@@ -1,8 +1,25 @@
-'use strict';
+import React, { PropTypes } from 'react';
+import { Link, IndexLink } from 'react-router';
+import jQuery from 'jQuery';
+// import MainLayout from 'components/MainLayout'
 
-const { Router, Route, IndexRoute, Link, browserHistory } = ReactRouter
+// const { Router, Route, IndexRoute, Link, browserHistory } = ReactRouter
 
-class NewReader extends React.Component {
+class MainLayout extends React.Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <div className="mainLayout">
+        <h2>Hello from main layout</h2>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+
+export default class NewReader extends React.Component {
   constructor() {
     super();
   }

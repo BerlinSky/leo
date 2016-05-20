@@ -1,6 +1,9 @@
-"use strict";
+// "use strict";
 
-var gulp = require('gulp');
+import gulp from 'gulp';
+
+
+// var gulp = require('gulp');
 var connect = require('gulp-connect'); //Runs a local dev server
 var open = require('gulp-open'); //Open a URL in a web browser
 var sourcemaps = require('gulp-sourcemaps');
@@ -9,6 +12,8 @@ var sass = require('gulp-sass');
 var util = require('gulp-util');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var source = require('vinyl-source-stream');
+var eslint = require('eslint');
 
 var config = {
 	port: 9025,
@@ -19,7 +24,7 @@ var config = {
 		sass: './src/sass/**/*.scss',
 		css: './app/styles/',
 		dist: './dist',
-		mainJs: './app/main.js'
+		mainJs: './app/main.jsx'
 	}
 }
 
@@ -44,16 +49,6 @@ gulp.task('open', ['connect'], function() {
 // Input file.
 var debugFlag = true;
 var bundler = browserify(config.mainJs, debugFlag);
-
-gulp.task('js', function() {
-	browserify(config.paths.mainJs)
-		.transform(babelify)
-		.bundle()
-		.on('error', console.error.bind(console))
-		.pipe(source('bundle.js'))
-		.pipe(gulp.dest(config.paths.dist + '/scripts'))
-		.pipe(connect.reload());
-});
 
 gulp.task('html', function() {
 	log('html task starts');
@@ -80,14 +75,34 @@ gulp.task('sass', function () {
 	log('sass task ends');
 });
 
-gulp.task('js', function() {
+// gulp.task('js', function() {
+// 	log('js task starts');
+
+// 	gulp.src(config.paths.js)
+// 		.pipe(gulp.dest(config.paths.dist))
+// 		.pipe(connect.reload());
+
+// 	log('js task starts');
+// });
+
+gulp.task('lint', () => {
+  //   return gulp.src([config.paths.js, 'gulpfile.babel.js'])
+		// .pipe(eslint({config: 'eslintrc'}))
+  //   .pipe(eslint.format())
+});
+
+gulp.task('js', ['lint'], function() {
 	log('js task starts');
 
-	gulp.src(config.paths.js)
-		.pipe(gulp.dest(config.paths.dist))
+	browserify(config.paths.mainJs)
+		.transform(babelify)
+		.bundle()
+		.on('error', console.error.bind(console))
+		.pipe(source('bundle.js'))
+		.pipe(gulp.dest(config.paths.dist + '/scripts'))
 		.pipe(connect.reload());
 
-	log('js task starts');
+	log('js task ends');
 });
 
 gulp.task('watch', function() {
