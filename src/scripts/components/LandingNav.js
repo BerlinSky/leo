@@ -1,8 +1,7 @@
-'use strict';
+import React from 'react';
+import {Link} from 'react-router';
 
-const { Link } = ReactRouter
-
-class LandingNav extends React.Component {
+export default class LandingNav extends React.Component {
 	constructor() {
 		super();
 	}
@@ -63,6 +62,3 @@ class LandingNav extends React.Component {
     )
   }
 }
-
-window.LandingNav = LandingNav;
-
