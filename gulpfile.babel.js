@@ -90,11 +90,12 @@ gulp.task('sass', () => {
 gulp.task('serve', ['html', 'sass', 'transpile'], () => sync.init({ server: 'dist', browser: "google chrome" }))
 gulp.task('js-watch', ['transpile'], () => sync.reload());
 gulp.task('html-watch', ['html'], () => sync.reload());
+gulp.task('sass-watch', ['sass'], () => sync.reload());
 
 gulp.task('watch', ['serve'], () => {
   gulp.watch('src/*.html', ['html-watch'])
+  gulp.watch(config.paths.sass, ['sass-watch'])
   gulp.watch('src/scripts/**/*', ['js-watch'])
-  gulp.watch('dist/styles/main.css', sync.reload)
 })
 
 gulp.task('default', ['watch']);
