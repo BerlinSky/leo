@@ -9,6 +9,22 @@ import watchify from 'watchify';
 import babelify from 'babelify';
 import uglify from 'gulp-uglify';
 import ifElse from 'gulp-if-else';
+import sass from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
+import prefix from 'gulp-autoprefixer';
+
+import util from 'gulp-util';
+
+const config = {
+	paths: {
+		html: './src/*.html',
+		js: './src/scripts/**/*.js?',
+		sass: './src/sass/**/*.scss',
+		css: './dist/styles/',
+		dist: './dist',
+		mainJs: './src/scripts/main.jsx'
+	}
+}
 
 watchify.args.debug = true;
 
@@ -39,21 +55,59 @@ function bundle() {
     .pipe(gulp.dest('dist/scripts'));
 }
 
-gulp.task('default', ['transpile']);
-
 gulp.task('transpile', ['lint'], () => bundle());
 
 gulp.task('lint', () => {
-    return gulp.src(['src/**/*.js', 'gulpfile.babel.js'])
-      .pipe(eslint())
-      .pipe(eslint.format())
+	log('lint task started');
+
+  return gulp.src(['src/**/*.js', 'gulpfile.babel.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
 });
 
-gulp.task('serve', ['transpile'], () => sync.init({ server: 'dist', browser: "google chrome" }))
+gulp.task('html', () => {
+	log('html task starts');
+
+	gulp.src(config.paths.html)
+		.pipe(gulp.dest(config.paths.dist));
+
+	log('html task ends');
+});
+
+gulp.task('sass', () => {
+	log('sass task starts');
+
+  gulp.src([config.paths.sass])
+	  .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(prefix())
+    .pipe(sourcemaps.write())
+		.pipe(gulp.dest(config.paths.css));
+
+	log('sass task ends');
+});
+
+gulp.task('serve', ['html', 'sass', 'transpile'], () => sync.init({ server: 'dist', browser: "google chrome" }))
 gulp.task('js-watch', ['transpile'], () => sync.reload());
 
 gulp.task('watch', ['serve'], () => {
-  gulp.watch('src/**/*', ['js-watch'])
+  gulp.watch('src/scripts/**/*', ['js-watch'])
   gulp.watch('dist/styles/main.css', sync.reload)
   gulp.watch('dist/index.html', sync.reload)
 })
+
+gulp.task('default', ['watch']);
+
+///////////
+function log(msg) {
+	if (typeof(msg) === 'object') {
+		for (var item in msg) {
+			if (msg.hasOwnProperty(item)) {
+				util.log(util.colors.blue(msg[item]));
+			}
+		}
+	}
+	else {
+		util.log(util.colors.blue(msg));
+	}
+}
