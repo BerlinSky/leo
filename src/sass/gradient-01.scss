@@ -1,0 +1,29 @@
+.box {
+	width: 800px;
+  height: 800px;
+  background: 
+    repeating-radial-gradient(
+      circle at 0 0, 
+      #eee,
+      #333 15px
+    );
+}
+
+.grit {
+  -webkit-mask-image: url("http://support.nature.org/images/earth/assets/grit.png");
+  mask-image: url("http://support.nature.org/images/earth/assets/grit.png");
+}
+
+.targetImgage {
+	border-width: 100px 100px 100px 100px;
+	width: 300px;
+	height: 300px;
+  margin: 40px;
+  // background: #333;
+
+  border-image: url("../images/brushed-metal.png") 275 275 275 275 stretch;
+}
+.svg-border-mask {
+  -webkit-mask-box-image: url(../images/brushed-metal.svg) 80 repeat;
+  mask-border: url(../images/brushed-metal.svg) 80 repeat;
+}

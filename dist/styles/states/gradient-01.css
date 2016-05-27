@@ -1,0 +1,7 @@
+.box {
+  width: 800px;
+  height: 800px;
+  background: -webkit-repeating-radial-gradient(0 0, circle, #eee, #ccc 15px);
+  background: repeating-radial-gradient(circle at 0 0, #eee, #ccc 15px); }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImdyYWRpZW50LTAxLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixjQUFjO0VBQ2QsNEVBQXNFO0VBQXRFLHNFQUFzRSxFQUFFIiwiZmlsZSI6InN0YXRlcy9ncmFkaWVudC0wMS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYm94IHtcbiAgd2lkdGg6IDgwMHB4O1xuICBoZWlnaHQ6IDgwMHB4O1xuICBiYWNrZ3JvdW5kOiByZXBlYXRpbmctcmFkaWFsLWdyYWRpZW50KGNpcmNsZSBhdCAwIDAsICNlZWUsICNjY2MgMTVweCk7IH1cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */
