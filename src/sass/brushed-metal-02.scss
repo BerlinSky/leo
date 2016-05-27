@@ -1,0 +1,68 @@
+.wrapper {
+	border: 1px solid PaleVioletRed;
+
+	position: relative;
+	width: 774px;
+	height: 584px;
+
+	background: url("../images/black-brushed-metal.jpg") no-repeat center;
+	background-size: cover;
+}
+
+.gunBarrel {
+	border: 1px solid PaleVioletBlue;
+
+	position: absolute;
+	top: calc((584px - 580px)/2);
+	right: calc((774px - 580px)/2);
+	width: 580px;
+	height: 580px;
+
+	background: url("../images/light-gun-barrel.png") no-repeat center;
+	background-size: cover;
+}
+
+.bullet {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+
+	.bullet__image {
+		border-radius: 50%;
+		margin: 3px;
+		max-widht: 100%;
+		max-height: 100%;
+	}
+}
+
+.bullet--01 {
+	left: calc((580px - 150px)/2);
+	top: calc(580px - 196px);
+}
+
+.bullet--06 {
+	left: calc((580px - 150px)/2);
+	top: calc(580px - 540px);
+}
+
+.bullet--02 {
+	left: calc((580px - 520px));
+	top: calc(580px - 454px);
+}
+
+.bullet--03 {
+	left: calc((580px - 520px));
+	top: calc(580px - 278px);
+}
+
+.bullet--04 {
+	left: calc((580px - 220px));
+	top: calc(580px - 454px);
+}
+
+.bullet--05 {
+	left: calc((580px - 220px));
+	top: calc(580px - 278px);
+}
+
+
